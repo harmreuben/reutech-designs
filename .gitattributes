@@ -1,0 +1,12 @@
+# Store text files with LF in the repository and let Git handle
+# line endings on checkout. Silences the LF/CRLF warnings on Windows.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
