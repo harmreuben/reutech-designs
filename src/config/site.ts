@@ -28,8 +28,13 @@ export const site = {
    */
   url: '',
 
-  /** Supplied by the owner on 19 Oct 2026. */
+  /**
+   * Supplied by the owner on 19 Oct 2026. The domain is not purchased yet,
+   * so this mailbox cannot receive mail. It stays hidden while `emailLive`
+   * is false. TODO(owner): set to true once the domain and mailbox work.
+   */
   email: 'hello@reutechdesigns.com',
+  emailLive: false,
 
   phone: {
     /** As written locally. */
@@ -41,11 +46,11 @@ export const site = {
   whatsapp: {
     /**
      * Digits only, country code first, no '+' (WhatsApp click-to-chat format).
-     * TODO(owner): confirm this number is active on WhatsApp before launch.
-     * The WhatsApp buttons stay hidden while `confirmed` is false.
+     * Owner confirmed on 19 Oct 2026 that this number is active on WhatsApp.
+     * Set `confirmed` to false to hide every WhatsApp button.
      */
     number: '254701209444',
-    confirmed: false,
+    confirmed: true,
   },
 
   location: {
@@ -59,3 +64,4 @@ export const site = {
 } as const
 
 export const hasWhatsApp = site.whatsapp.confirmed && site.whatsapp.number.length > 0
+export const hasEmail = site.emailLive && site.email.length > 0

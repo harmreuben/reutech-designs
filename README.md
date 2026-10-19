@@ -1,75 +1,62 @@
-# React + TypeScript + Vite
+# Reutech Designs website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Graphic design and photography studio website. React 19, TypeScript, Vite, Tailwind CSS 4 and React Router.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Command | What it does |
+|---|---|
+| `npm install` | Install dependencies |
+| `npm run dev` | Local development site at http://localhost:5173 |
+| `npm run build` | Type-check and build the production site into `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Check code with ESLint |
 
-## React Compiler
+`/styleguide` (development only) shows the logo, colours, type, buttons and form fields.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Where content lives
 
-## Expanding the ESLint configuration
+| What | File |
+|---|---|
+| Business name, phone, WhatsApp, email, location, social links | `src/config/site.ts` |
+| Services, offerings and deliverables | `src/data/services.ts` |
+| Portfolio projects | `src/data/projects.ts` |
+| Pricing packages | `src/data/pricing.ts` |
+| Project process steps | `src/data/process.ts` |
+| Testimonials | `src/data/testimonials.ts` |
+| Navigation | `src/data/navigation.ts` |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Anything empty or switched off in `site.ts` (email, social links) is hidden on the site.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Common updates
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Turn on the email address
+After buying the domain and setting up the mailbox, set `emailLive: true` in `src/config/site.ts`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Add a photography project
+1. Save the photo (about 1600 × 1200 px, JPG or WebP) at the path in that project's `plannedPhoto`, e.g. `public/portfolio/photos/portrait-session.jpg`.
+2. In `src/data/projects.ts`, replace `image: null` with:
+   ```ts
+   image: {
+     src: '/portfolio/photos/portrait-session.jpg',
+     alt: 'Describe what is in the photo',
+     width: 1600,
+     height: 1200,
+   },
+   ```
+3. If it's real client work, set `isSample: false` and use the real client name (with their permission).
 
-```
+Photography projects without a photo are hidden on the live site and appear as placeholders only during development.
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### Add a real client project
+Add an entry to `src/data/projects.ts` with `isSample: false`. Put images in `public/portfolio/`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Publish a price
+In `src/data/pricing.ts`, change a package's `price` from `{ status: 'quote' }` to `{ status: 'from', amountKES: <approved amount> }`. Only use prices you have approved.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Add a testimonial
+Add it to `src/data/testimonials.ts` only when the client has agreed to be quoted. The section appears automatically once the list has an entry.
 
-```
+## Sample artwork
+
+The images in `public/portfolio/` are original sample concepts for fictional brands (Mvua Roasters, Nairobi Night Market, Kijani Fitness, Amani Advocates, Savanna Tech Meetup). They are labelled "Sample concept" everywhere they appear. Replace them with real work over time.

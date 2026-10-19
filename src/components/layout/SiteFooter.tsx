@@ -1,6 +1,7 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { Link } from 'react-router'
-import { site } from '../../config/site'
+import { hasEmail, hasWhatsApp, site } from '../../config/site'
+import { mailtoUrl, telUrl, whatsappUrl } from '../../lib/contact'
 import { legalNav, primaryNav, serviceNav } from '../../data/navigation'
 import { Logo } from '../brand/Logo'
 
@@ -64,9 +65,22 @@ export function SiteFooter() {
         <div>
           <FooterHeading>Get in touch</FooterHeading>
           <ul className="mt-4 space-y-3 text-[0.95rem]">
-            {site.email && (
+            {hasWhatsApp && (
               <li>
-                <a href={`mailto:${site.email}`} className={`inline-flex items-center gap-2.5 ${footerLink}`}>
+                <a
+                  href={whatsappUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2.5 ${footerLink}`}
+                >
+                  <MessageCircle className="size-4 shrink-0 text-electric" aria-hidden="true" />
+                  WhatsApp us
+                </a>
+              </li>
+            )}
+            {hasEmail && (
+              <li>
+                <a href={mailtoUrl} className={`inline-flex items-center gap-2.5 ${footerLink}`}>
                   <Mail className="size-4 shrink-0 text-electric" aria-hidden="true" />
                   {site.email}
                 </a>
@@ -74,7 +88,7 @@ export function SiteFooter() {
             )}
             {site.phone.e164 && (
               <li>
-                <a href={`tel:${site.phone.e164}`} className={`inline-flex items-center gap-2.5 ${footerLink}`}>
+                <a href={telUrl} className={`inline-flex items-center gap-2.5 ${footerLink}`}>
                   <Phone className="size-4 shrink-0 text-electric" aria-hidden="true" />
                   {site.phone.display}
                 </a>

@@ -1,7 +1,8 @@
 import { Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router'
-import { site } from '../../config/site'
+import { hasWhatsApp, site } from '../../config/site'
+import { telUrl, whatsappUrl } from '../../lib/contact'
 import { primaryNav, startProject } from '../../data/navigation'
 import { Logo } from '../brand/Logo'
 import { ButtonLink } from '../ui/ButtonLink'
@@ -163,10 +164,21 @@ export function SiteHeader() {
               {startProject.label}
             </ButtonLink>
             <p className="mt-6 text-sm text-subtle">
-              Or email{' '}
-              <a className="text-link" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
+              {hasWhatsApp ? (
+                <>
+                  Or{' '}
+                  <a className="text-link" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+                    message us on WhatsApp
+                  </a>
+                </>
+              ) : (
+                <>
+                  Or call{' '}
+                  <a className="text-link" href={telUrl}>
+                    {site.phone.display}
+                  </a>
+                </>
+              )}
             </p>
           </div>
         </nav>

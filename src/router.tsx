@@ -14,6 +14,7 @@ const pages: RouteObject[] = [
   { path: 'about', lazy: page(() => import('./pages/About')) },
   { path: 'services', lazy: page(() => import('./pages/Services')) },
   { path: 'portfolio', lazy: page(() => import('./pages/Portfolio')) },
+  { path: 'portfolio/:slug', lazy: page(() => import('./pages/ProjectDetail')) },
   { path: 'pricing', lazy: page(() => import('./pages/Pricing')) },
   { path: 'contact', lazy: page(() => import('./pages/Contact')) },
   { path: 'privacy', lazy: page(() => import('./pages/Privacy')) },
