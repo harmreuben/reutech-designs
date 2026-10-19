@@ -23,7 +23,7 @@ export default function Pricing() {
       />
       <PageHeader
         title="Pricing"
-        intro="Every project is different, so we quote each one on its scope. All prices are in Kenyan shillings (KES), and you’ll know the full cost before any work starts."
+        intro="Every project is different, so we quote each one on its scope. All prices are in Kenyan shillings (KES), and you’ll receive a quote before any work starts."
       />
 
       {services.map((service) => {

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Outlet, ScrollRestoration, useLocation } from 'react-router'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
+import { WhatsAppButton } from './WhatsAppButton'
 
 export function RootLayout() {
   const { pathname } = useLocation()
@@ -31,6 +32,7 @@ export function RootLayout() {
         <Outlet />
       </main>
       <SiteFooter />
+      <WhatsAppButton />
       {/* Scrolls to the top on new pages, to #hash targets, and restores position on Back */}
       <ScrollRestoration />
     </div>

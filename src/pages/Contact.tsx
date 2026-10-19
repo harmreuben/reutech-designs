@@ -1,10 +1,10 @@
 import { Mail, MapPin, MessageCircle, Phone, type LucideIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { PageMeta } from '../components/layout/PageMeta'
-import { DevNote } from '../components/ui/DevNote'
+import { QuoteForm } from '../components/forms/QuoteForm'
 import { PageHeader } from '../components/ui/PageHeader'
 import { hasEmail, hasWhatsApp, site } from '../config/site'
-import { mailtoUrl, telUrl, whatsappMessages, whatsappUrl } from '../lib/contact'
+import { mailtoUrl, telUrl, whatsappUrl } from '../lib/contact'
 
 function ContactMethod({
   icon: Icon,
@@ -54,33 +54,15 @@ export default function Contact() {
             Request a quote
           </h2>
           <p className="mt-4 max-w-prose text-muted">
-            The more we know, the more accurate the quote. It helps to include:
+            Fill in the form and we’ll reply with any questions, then a quote. It takes about two
+            minutes.
           </p>
-          <ul className="mt-5 space-y-2 text-muted">
-            {helpfulDetails.map((d) => (
-              <li key={d} className="flex gap-3">
-                <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-electric" />
-                {d}
-              </li>
-            ))}
-          </ul>
-          {hasWhatsApp && (
-            <div className="mt-8">
-              <a
-                href={whatsappUrl(whatsappMessages.quote)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-              >
-                <MessageCircle className="size-5" aria-hidden="true" />
-                Send your request on WhatsApp
-              </a>
-            </div>
-          )}
-          <DevNote>The online quote form is built here in Stage 4.</DevNote>
+          <div className="mt-10">
+            <QuoteForm />
+          </div>
         </section>
 
-        <aside aria-labelledby="reach-heading" className="card h-fit p-7 sm:p-9">
+        <aside aria-labelledby="reach-heading" className="card h-fit p-7 sm:p-9 lg:sticky lg:top-24">
           <h2 id="reach-heading" className="text-h3">
             Other ways to reach us
           </h2>
@@ -107,6 +89,16 @@ export default function Contact() {
             <ContactMethod icon={MapPin} title="Location">
               {site.location.city}, {site.location.country}
             </ContactMethod>
+          </ul>
+
+          <h2 className="mt-10 border-t border-line pt-8 text-h3">What to include</h2>
+          <ul className="mt-4 space-y-2 text-[0.95rem] text-muted">
+            {helpfulDetails.map((d) => (
+              <li key={d} className="flex gap-3">
+                <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-electric" />
+                {d}
+              </li>
+            ))}
           </ul>
         </aside>
       </div>

@@ -62,7 +62,7 @@ export const services: Service[] = [
     deliverables: [
       'Edited, high-resolution images',
       'Web-optimised copies for social media and websites',
-      'Delivery by private download link',
+      'Digital delivery of the final files',
     ],
     clientNeeds: [
       'Covering a launch, conference or celebration',

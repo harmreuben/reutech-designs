@@ -14,6 +14,22 @@ Graphic design and photography studio website. React 19, TypeScript, Vite, Tailw
 
 `/styleguide` (development only) shows the logo, colours, type, buttons and form fields.
 
+## Quote form (email delivery)
+
+The Contact page form posts to `/api/quote`. The same handler (`server/quote.ts`) runs as a Vercel Function in production (`api/quote.ts`) and inside `npm run dev` / `npm run preview` locally.
+
+It validates and cleans every field on the server, blocks other websites from posting, rate-limits each connection, and uses a hidden honeypot field and a minimum fill time to filter out bots. Enquiries are emailed through [Resend](https://resend.com) with the visitor's address as reply-to.
+
+**Setup**
+1. Create a free Resend account with the email address that should receive enquiries.
+2. In Resend, create an API key.
+3. Copy `.env.example` to `.env.local` and fill in `RESEND_API_KEY` and `QUOTE_TO_EMAIL`. Keep the test sender `onboarding@resend.dev` for now: it can only deliver to your own Resend account address.
+4. Restart `npm run dev`, then send a test request from the Contact page.
+5. After buying the domain, verify it in Resend and change `QUOTE_FROM_EMAIL` to e.g. `Reutech Designs Website <website@reutechdesigns.com>`.
+6. On Vercel, add the same variables under Project → Settings → Environment Variables.
+
+Without `RESEND_API_KEY`, development prints each request in the terminal instead of emailing it, and production shows visitors an error with a WhatsApp alternative. The site never tells a visitor a request was sent unless it actually was.
+
 ## Where content lives
 
 | What | File |

@@ -57,6 +57,7 @@ export function SiteHeader() {
 
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
+    document.body.dataset.menuOpen = 'true'
     panelRef.current?.querySelector<HTMLElement>('a')?.focus()
 
     const onKeyDown = (e: KeyboardEvent) => {
@@ -85,6 +86,7 @@ export function SiteHeader() {
     document.addEventListener('keydown', onKeyDown)
     return () => {
       document.body.style.overflow = previousOverflow
+      delete document.body.dataset.menuOpen
       document.removeEventListener('keydown', onKeyDown)
     }
   }, [menuOpen])

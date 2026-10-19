@@ -275,3 +275,8 @@
 .mobile-menu:not([hidden]) {
   animation: menu-in 200ms var(--ease-out-soft);
 }
+
+/* Hide the floating WhatsApp button while the mobile menu covers the page */
+body[data-menu-open] .whatsapp-float {
+  display: none;
+}
