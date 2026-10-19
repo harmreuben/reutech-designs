@@ -48,6 +48,19 @@ The homepage includes schema.org business data (name, phone, Nairobi location) b
 - **Content**: navigation order, only the two promoted services, no virtual-assistance wording, portfolio images exist, no unapproved prices, correct WhatsApp link.
 - **SEO**: every page has a unique title and description, and the business data contains no invented facts.
 
+## Deployment (Vercel)
+
+`vercel.json` sets the build (`npm run build` → `dist`), clean URLs, security headers (including a Content Security Policy) and caching. The site needs no rewrites: every page has its own HTML file, and unknown addresses get `404.html` with a real 404 status. `api/quote.ts` becomes a Vercel Function automatically.
+
+Environment variables to add in Vercel (Project → Settings → Environment Variables): `RESEND_API_KEY`, `QUOTE_TO_EMAIL`, `QUOTE_FROM_EMAIL`.
+
+After each deployment, check the live site:
+
+```powershell
+npm run verify:deploy -- https://your-site.vercel.app
+npm run verify:deploy -- https://your-site.vercel.app --send-test-email
+```
+
 ## Where content lives
 
 | What | File |
