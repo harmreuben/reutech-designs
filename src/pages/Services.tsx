@@ -7,10 +7,7 @@ import { services } from '../data/services'
 export default function Services() {
   return (
     <>
-      <PageMeta
-        title="Services"
-        description="Graphic design and photography in Nairobi: logos, brand identity, posters, social media graphics, events, portraits, corporate and product photography."
-      />
+      <PageMeta path="/services" />
       <PageHeader
         title="Services"
         intro="Graphic design and photography, on their own or together, so your brand looks consistent everywhere it appears."

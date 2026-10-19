@@ -24,10 +24,7 @@ const values = [
 export default function About() {
   return (
     <>
-      <PageMeta
-        title="About Us"
-        description="Reutech Designs is a Nairobi creative studio for graphic design and photography. Learn how we work and what we value."
-      />
+      <PageMeta path="/about" />
       <PageHeader
         title="About Reutech Designs"
         intro="A Nairobi-based creative studio for graphic design and photography, built on clear communication and careful work."

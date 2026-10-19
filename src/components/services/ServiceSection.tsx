@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
 import { hasWhatsApp } from '../../config/site'
-import { visibleProjects } from '../../data/projects'
+import { visibleProjects } from '../../data/portfolio'
 import { whatsappMessages, whatsappUrl } from '../../lib/contact'
 import type { Service } from '../../types/content'
 import { PhotoPlaceholder } from '../portfolio/PhotoPlaceholder'

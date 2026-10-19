@@ -11,6 +11,8 @@ Graphic design and photography studio website. React 19, TypeScript, Vite, Tailw
 | `npm run build` | Type-check and build the production site into `dist/` |
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | Check code with ESLint |
+| `npm test` | Run the automated tests (Vitest) |
+| `npm run check` | Lint, test and build in one go; run this before committing |
 
 `/styleguide` (development only) shows the logo, colours, type, buttons and form fields.
 
@@ -29,6 +31,22 @@ It validates and cleans every field on the server, blocks other websites from po
 6. On Vercel, add the same variables under Project → Settings → Environment Variables.
 
 Without `RESEND_API_KEY`, development prints each request in the terminal instead of emailing it, and production shows visitors an error with a WhatsApp alternative. The site never tells a visitor a request was sent unless it actually was.
+
+## SEO
+
+Page titles and descriptions live in `src/data/seo.ts`. During `npm run build`, `build-tools/seo-plugin.ts` writes a separate HTML file for every page (e.g. `dist/about/index.html`) with that page's title, description and social-preview tags, plus `404.html` and `robots.txt`. This means Google and link previews on WhatsApp, Facebook and LinkedIn show the right information.
+
+**After buying the domain**, set `url` in `src/config/site.ts` (e.g. `'https://reutechdesigns.com'`). The next build then also adds canonical URLs, the social-sharing image (`public/og-image.png`) and `sitemap.xml`.
+
+The homepage includes schema.org business data (name, phone, Nairobi location) built only from confirmed details in `site.ts`.
+
+## Tests
+
+`npm test` runs 44 checks in `tests/`:
+- **Form rules**: every field's validation, including the phone and date rules.
+- **Quote endpoint**: methods, other-website blocking, spam checks, rate limiting, honest errors, and the exact email sent to Resend (with a fake Resend, so no real email is sent).
+- **Content**: navigation order, only the two promoted services, no virtual-assistance wording, portfolio images exist, no unapproved prices, correct WhatsApp link.
+- **SEO**: every page has a unique title and description, and the business data contains no invented facts.
 
 ## Where content lives
 

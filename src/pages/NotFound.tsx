@@ -1,12 +1,12 @@
 import { PageMeta } from '../components/layout/PageMeta'
 import { ButtonLink } from '../components/ui/ButtonLink'
 import { RingArc } from '../components/ui/RingArc'
+import { notFoundRoute } from '../data/seo'
 
 export default function NotFound() {
   return (
     <>
-      <PageMeta title="Page not found" />
-      <meta name="robots" content="noindex" />
+      <PageMeta meta={notFoundRoute} />
       <section className="relative overflow-hidden">
         <RingArc className="absolute top-1/2 left-1/2 w-[40rem] -translate-x-1/2 -translate-y-1/2 opacity-60" />
         <div className="container-site relative flex flex-col items-center py-28 text-center sm:py-36">

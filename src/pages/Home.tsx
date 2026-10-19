@@ -9,7 +9,7 @@ import { ButtonLink } from '../components/ui/ButtonLink'
 import { RingArc } from '../components/ui/RingArc'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { startProject } from '../data/navigation'
-import { featuredProjects } from '../data/projects'
+import { featuredProjects } from '../data/portfolio'
 import { services } from '../data/services'
 
 const reasons = [
@@ -89,7 +89,7 @@ function Hero() {
 export default function Home() {
   return (
     <>
-      <PageMeta />
+      <PageMeta path="/" />
       <Hero />
 
       {/* Services */}

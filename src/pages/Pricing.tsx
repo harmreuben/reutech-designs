@@ -17,10 +17,7 @@ const quoteFactors = [
 export default function Pricing() {
   return (
     <>
-      <PageMeta
-        title="Pricing"
-        description="Graphic design and photography packages from Reutech Designs. Every project is quoted in Kenyan shillings (KES) based on its scope."
-      />
+      <PageMeta path="/pricing" />
       <PageHeader
         title="Pricing"
         intro="Every project is different, so we quote each one on its scope. All prices are in Kenyan shillings (KES), and you’ll receive a quote before any work starts."

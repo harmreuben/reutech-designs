@@ -39,10 +39,7 @@ const helpfulDetails = [
 export default function Contact() {
   return (
     <>
-      <PageMeta
-        title="Contact"
-        description="Request a quote or ask about a graphic design or photography project with Reutech Designs in Nairobi, Kenya."
-      />
+      <PageMeta path="/contact" />
       <PageHeader
         title="Let’s talk about your project"
         intro="Tell us what you have in mind. We’ll reply with any questions, then a quote and next steps."

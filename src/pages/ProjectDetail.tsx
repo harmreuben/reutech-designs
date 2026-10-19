@@ -5,9 +5,11 @@ import { PhotoPlaceholder } from '../components/portfolio/PhotoPlaceholder'
 import { ProjectCard } from '../components/portfolio/ProjectCard'
 import { CtaBand } from '../components/sections/CtaBand'
 import { ButtonLink } from '../components/ui/ButtonLink'
-import { categoryLabels, getProject, visibleProjects } from '../data/projects'
+import { getProject, visibleProjects } from '../data/portfolio'
+import { categoryLabels } from '../data/projects'
 import { getService } from '../data/services'
 import NotFound from './NotFound'
+import { projectRoute } from '../data/seo'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
@@ -19,7 +21,7 @@ export default function ProjectDetail() {
 
   return (
     <>
-      <PageMeta title={project.title} description={project.summary} />
+      <PageMeta meta={projectRoute(project)} />
 
       <article aria-labelledby="project-heading">
         <header className="container-site pt-10 sm:pt-14">

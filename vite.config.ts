@@ -2,6 +2,7 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { defineConfig, loadEnv, type Connect, type Plugin } from 'vite'
+import { seoPlugin } from './build-tools/seo-plugin.ts'
 import { handleQuoteRequest, type QuoteEnv } from './server/quote.ts'
 
 /**
@@ -60,6 +61,6 @@ function localQuoteApi(env: Record<string, string>): Plugin {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
-    plugins: [react(), tailwindcss(), localQuoteApi(env)],
+    plugins: [react(), tailwindcss(), localQuoteApi(env), seoPlugin()],
   }
 })

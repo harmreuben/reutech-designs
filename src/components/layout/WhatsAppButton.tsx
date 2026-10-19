@@ -17,15 +17,17 @@ function WhatsAppIcon({ className }: { className?: string }) {
 export function WhatsAppButton() {
   if (!hasWhatsApp) return null
   return (
-    <a
-      href={whatsappUrl(whatsappMessages.general)}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat with Reutech Designs on WhatsApp (opens in a new tab)"
-      title="Chat on WhatsApp"
-      className="whatsapp-float fixed right-4 bottom-4 z-40 inline-flex size-14 items-center justify-center rounded-full bg-[#25D366] text-[#08260F] shadow-lg shadow-black/40 transition-transform hover:scale-105 focus-visible:outline-offset-4 sm:right-6 sm:bottom-6"
-    >
-      <WhatsAppIcon className="size-7" />
-    </a>
+    <aside aria-label="Quick contact">
+      <a
+        href={whatsappUrl(whatsappMessages.general)}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with Reutech Designs on WhatsApp (opens in a new tab)"
+        title="Chat on WhatsApp"
+        className="whatsapp-float fixed right-4 bottom-4 z-40 inline-flex size-14 items-center justify-center rounded-full bg-[#25D366] text-[#08260F] shadow-lg shadow-black/40 transition-transform hover:scale-105 focus-visible:outline-offset-4 sm:right-6 sm:bottom-6"
+      >
+        <WhatsAppIcon className="size-7" />
+      </a>
+    </aside>
   )
 }

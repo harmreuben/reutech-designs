@@ -27,7 +27,7 @@ export function Logo({ variant = 'compact', className = '' }: LogoProps) {
       <span className={`inline-flex items-center gap-3 ${className}`}>
         <Monogram className="size-10 shrink-0" />
         <span className="flex flex-col font-display leading-none">
-          <span className="text-[1.15rem] font-extrabold tracking-[0.1em] text-fg">REUTECH</span>
+          <span className="text-[1.15rem] font-extrabold tracking-[0.1em] text-fg">REUTECH</span>{' '}
           <span className={`mt-1 text-[0.62rem] font-bold tracking-[0.5em] ${designsGradient}`}>
             DESIGNS
           </span>
@@ -41,7 +41,7 @@ export function Logo({ variant = 'compact', className = '' }: LogoProps) {
       <Monogram className="size-28 sm:size-36" />
       <span className="mt-5 font-display text-[2.1rem] leading-none font-extrabold tracking-[0.14em] text-fg sm:text-5xl">
         REUTECH
-      </span>
+      </span>{' '}
       <span className="mt-3 flex w-full items-center gap-3">
         <span className="h-[3px] flex-1 bg-electric" aria-hidden="true" />
         <span

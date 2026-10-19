@@ -26,10 +26,7 @@ function Block({ id, title, children }: { id: string; title: string; children: R
 export default function Privacy() {
   return (
     <>
-      <PageMeta
-        title="Privacy notice"
-        description="How Reutech Designs collects, uses and protects the details you send through this website."
-      />
+      <PageMeta path="/privacy" />
       <PageHeader
         title="Privacy notice"
         intro={`How ${site.name} handles the details you share with us through this website. Last updated ${LAST_UPDATED}.`}

@@ -1,4 +1,4 @@
-import type { Project, ProjectCategory } from '../types/content'
+import type { Project, ProjectCategory } from '../types/content.ts'
 
 /**
  * Portfolio projects: the single source for the homepage, Services and
@@ -212,14 +212,8 @@ export const portfolioFilters: ProjectCategory[] = [
   'events-portraits',
 ]
 
-/** Projects shown on the site. Photo slots without a photo appear only in development. */
-export const visibleProjects = projects.filter((p) => p.image !== null || import.meta.env.DEV)
-
-export const featuredProjects = visibleProjects.filter((p) => p.featured).slice(0, 4)
-
-export function getProject(slug: string | undefined) {
-  return visibleProjects.find((p) => p.slug === slug)
-}
+/** Projects with an image: what the production site publishes. */
+export const publishedProjects = projects.filter((p) => p.image !== null)
 
 export function isPortfolioFilter(value: string | null): value is ProjectCategory {
   return value !== null && (portfolioFilters as string[]).includes(value)

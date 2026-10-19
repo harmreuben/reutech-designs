@@ -36,8 +36,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function Styleguide() {
   return (
     <>
-      <PageMeta title="Style guide" />
-      <meta name="robots" content="noindex" />
+      <PageMeta meta={{ path: '/styleguide', title: 'Style guide', description: 'Design system reference', noindex: true }} />
       <PageHeader title="Design system" intro="Development reference. Not included in production builds." />
 
       <Section title="Logo">

@@ -26,7 +26,7 @@ export const site = {
    * TODO(owner): production domain, e.g. 'https://reutechdesigns.com'.
    * Needed for canonical URLs, the sitemap and social-sharing previews.
    */
-  url: '',
+  url: '' as string,
 
   /**
    * Supplied by the owner on 19 Oct 2026. The domain is not purchased yet,
@@ -34,7 +34,7 @@ export const site = {
    * is false. TODO(owner): set to true once the domain and mailbox work.
    */
   email: 'hello@reutechdesigns.com',
-  emailLive: false,
+  emailLive: false as boolean,
 
   phone: {
     /** As written locally. */

@@ -4,7 +4,8 @@ import { ProjectCard } from '../components/portfolio/ProjectCard'
 import { CtaBand } from '../components/sections/CtaBand'
 import { ButtonLink } from '../components/ui/ButtonLink'
 import { PageHeader } from '../components/ui/PageHeader'
-import { categoryLabels, isPortfolioFilter, portfolioFilters, visibleProjects } from '../data/projects'
+import { visibleProjects } from '../data/portfolio'
+import { categoryLabels, isPortfolioFilter, portfolioFilters } from '../data/projects'
 import { startProject } from '../data/navigation'
 
 export default function Portfolio() {
@@ -27,10 +28,7 @@ export default function Portfolio() {
 
   return (
     <>
-      <PageMeta
-        title="Portfolio"
-        description="Graphic design, branding, social media and photography work by Reutech Designs."
-      />
+      <PageMeta path="/portfolio" />
       <PageHeader
         title="Portfolio"
         intro="A selection of design and photography work. Pieces marked “Sample concept” were made for fictional brands to show our approach; client projects will be added as they are completed."

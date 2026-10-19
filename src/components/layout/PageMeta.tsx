@@ -1,22 +1,22 @@
-import { site } from '../../config/site'
+import { createElement } from 'react'
+import { headTags, routeMeta, type RouteMeta } from '../../data/seo'
 
-interface PageMetaProps {
-  /** Page-specific title. The brand name is appended automatically. */
-  title?: string
-  description?: string
-}
+type PageMetaProps = { meta: RouteMeta } | { path: string }
 
 /**
- * Per-page <title> and description. React 19 hoists these tags into
- * <head>. Canonical URLs and social tags are added in the SEO stage
- * once the production domain is confirmed.
+ * Per-page <title>, description, canonical and social tags, from src/data/seo.ts.
+ * React 19 hoists these into <head>. The build also writes them into each
+ * page's HTML file, so they work without JavaScript too.
  */
-export function PageMeta({ title, description = site.description }: PageMetaProps) {
-  const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Graphic Design and Photography`
+export function PageMeta(props: PageMetaProps) {
+  const meta = 'meta' in props ? props.meta : routeMeta(props.path)
+  if (!meta) throw new Error(`No SEO entry for ${'path' in props ? props.path : 'page'} in src/data/seo.ts`)
+
   return (
     <>
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
+      {headTags(meta).map((t) =>
+        createElement(t.tag, { key: `${t.tag}-${Object.values(t.attrs)[0] ?? 'title'}`, ...t.attrs }, t.text),
+      )}
     </>
   )
 }
